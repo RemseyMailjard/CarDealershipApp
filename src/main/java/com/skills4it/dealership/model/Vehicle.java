@@ -117,7 +117,9 @@ public final class Vehicle {
 
     @Override
     public String toString() {
-        return "%d %s %s <%s> €%s".formatted(year, make, model, vin, price);
+        // Gebruik String.format voor betere leesbaarheid en flexibiliteit
+        return String.format("%d %s %s (VIN: %s), Price: %.2f",
+                year, make, model, vin, price);
     }
 
 
