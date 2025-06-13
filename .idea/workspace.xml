@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f87f00a1-f412-4641-8f46-beb9f2b2f237" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/io/ContractFileManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/Contract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/ContractType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/FinanceOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/LeaseContract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/PriceCalculable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/SalesContract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/Vehicle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/VehicleType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/ContractFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/Dealership.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/FinanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f87f00a1-f412-4641-8f46-beb9f2b2f237" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
