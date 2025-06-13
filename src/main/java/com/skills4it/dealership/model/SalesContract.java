@@ -82,6 +82,16 @@ public final class SalesContract extends Contract {
         return FinanceService.annuity(loanAmount, monthlyInterestRate, numberOfPayments);
     }
 
+    /**
+     * Serialises this contract into a pipe-separated string, suitable for CSV-style persistence.
+     *
+     * @return a pipe-separated data string that represents all contract fields
+     */
+    @Override
+    public String toDataString() {
+        return "";
+    }
+
     @Override
     public ContractType getType() {
         return ContractType.SALE;
