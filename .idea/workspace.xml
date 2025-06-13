@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f87f00a1-f412-4641-8f46-beb9f2b2f237" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/DatabaseConnector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcVehicleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/VehicleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/Vehicle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,9 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -58,6 +64,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.skills4it.dealership.data.dao" />
       <recent name="com.skills4it.dealership.model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">

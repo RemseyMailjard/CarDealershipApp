@@ -3,65 +3,63 @@ package com.skills4it.dealership.model;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-
 /**
  * Immutable value object that represents a single vehicle in the dealership inventory.
  * <p>
- *     The class is <strong>final</strong> and all fields are <strong>private final</strong>
- *     to guarantee thread-safety and prevent accidental mutation.
+ * This version is adapted for database persistence by including a vehicleId.
+ * The class remains immutable by using specific constructors and a 'wither' method.
  * </p>
  */
 public final class Vehicle {
 
-    /** Vehicle Identification Number (17 chars, unique). */
+    // --- Fields ---
+
+    /** The primary key from the database. Can be null for a new, unsaved vehicle. */
+    private final Integer vehicleId;
+
+    /** Vehicle Identification Number (unique business key). */
     private final String vin;
 
-    /** Production year (e.g. 2024). */
+    /** Production year. */
     private final int year;
 
-    /** Manufacturer brand (e.g. “Toyota”). */
+    /** Manufacturer brand (e.g., "Honda"). */
     private final String make;
 
-    /** Specific model name (e.g. “RAV4”). */
+    /** Specific model name (e.g., "Civic"). */
     private final String model;
 
     /** High-level vehicle category. */
     private final VehicleType type;
 
-    /** Exterior colour (plain text). */
+    /** Exterior color. */
     private final String color;
 
-    /** Recorded mileage in kilometres. */
+    /** Recorded mileage. */
     private final int odometer;
 
-    /** Asking price (in EUR), tax-exclusive. */
+    /** Asking price, tax-exclusive. */
     private final BigDecimal price;
 
-    // ──────────────────────────────── Constructors ────────────────────────────────
+    // --- Constructors ---
 
     /**
-     * Main constructor.
-     *
-     * @param vin      unique VIN, non-blank
-     * @param year     1886 ≤ year ≤ currentYear + 1
-     * @param make     manufacturer, non-blank
-     * @param model    model name, non-blank
-     * @param type     category, non-null
-     * @param color    paint colour, non-blank
-     * @param odometer kilometres ≥ 0
-     * @param price    non-null, ≥ 0
-     * @throws IllegalArgumentException if any argument is invalid
-     * @throws NullPointerException     if type or price is {@code null}
+     * Public constructor for creating a NEW vehicle within the application (e.g., via the UI).
+     * This vehicle does not yet have a database ID.
      */
-    public Vehicle(String vin,
-                   int year,
-                   String make,
-                   String model,
-                   VehicleType type,
-                   String color,
-                   int odometer,
-                   BigDecimal price) {
+    public Vehicle(String vin, int year, String make, String model,
+                   VehicleType type, String color, int odometer, BigDecimal price) {
+        // Delegate to the main private constructor, passing null for the ID.
+        this(null, vin, year, make, model, type, color, odometer, price);
+    }
 
+    /**
+     * Public constructor for hydrating a vehicle object from the database (e.g., in a DAO).
+     * This vehicle already has a database ID.
+     */
+    public Vehicle(Integer vehicleId, String vin, int year, String make, String model,
+                   VehicleType type, String color, int odometer, BigDecimal price) {
+        // --- Input Validation (Single Point of Truth) ---
         if (vin == null || vin.isBlank())
             throw new IllegalArgumentException("VIN must not be blank");
         int currentYear = java.time.Year.now().getValue();
@@ -79,7 +77,9 @@ public final class Vehicle {
         Objects.requireNonNull(price, "Price must not be null");
         if (price.signum() < 0)
             throw new IllegalArgumentException("Price cannot be negative");
+        // --- End of Validation ---
 
+        this.vehicleId = vehicleId;
         this.vin = vin;
         this.year = year;
         this.make = make;
@@ -90,37 +90,54 @@ public final class Vehicle {
         this.price = price;
     }
 
-    // ──────────────────────────────── Getters ─────────────────────────────────────
+    // --- Getters ---
 
-    public String getVin()        { return vin;       }
-    public int    getYear()       { return year;      }
-    public String getMake()       { return make;      }
-    public String getModel()      { return model;     }
-    public VehicleType getType()  { return type;      }
-    public String getColor()      { return color;     }
-    public int    getOdometer()   { return odometer;  }
-    public BigDecimal getPrice()  { return price;     }
+    public Integer getVehicleId() { return vehicleId; }
+    public String getVin()        { return vin; }
+    public int    getYear()       { return year; }
+    public String getMake()       { return make; }
+    public String getModel()      { return model; }
+    public VehicleType getType()  { return type; }
+    public String getColor()      { return color; }
+    public int    getOdometer()   { return odometer; }
+    public BigDecimal getPrice()  { return price; }
 
-    // ──────────────────────────────── Object overrides ────────────────────────────
+
+    // --- Wither Method for Immutability ---
+
+    /**
+     * Creates a new Vehicle instance with the specified database ID, while keeping all other fields the same.
+     * This is used by the DAO after an INSERT operation to return a complete object without mutating state.
+     *
+     * @param newId The database-generated ID.
+     * @return A new Vehicle object, identical to this one but with an ID.
+     */
+    public Vehicle withId(int newId) {
+        return new Vehicle(newId, this.vin, this.year, this.make, this.model, this.type, this.color, this.odometer, this.price);
+    }
+
+
+    // --- Object Overrides ---
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vehicle v)) return false;
+        // Equality is based on the business key (VIN), not the database ID.
         return vin.equals(v.vin);
     }
 
     @Override
     public int hashCode() {
+        // Hash code is based on the business key (VIN).
         return vin.hashCode();
     }
 
     @Override
     public String toString() {
-        // Gebruik String.format voor betere leesbaarheid en flexibiliteit
-        return String.format("%d %s %s (VIN: %s), Price: %.2f",
-                year, make, model, vin, price);
+        // Includes the vehicleId if it exists, for better debugging.
+        String idStr = (vehicleId != null) ? "ID: " + vehicleId + ", " : "";
+        return String.format("%s%d %s %s (VIN: %s), Price: $%,.2f",
+                idStr, year, make, model, vin, price);
     }
-
-
 }
