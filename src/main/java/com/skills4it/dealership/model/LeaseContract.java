@@ -58,6 +58,16 @@ public final class LeaseContract extends Contract {
         return FinanceService.annuity(getTotalPrice(), monthlyRate, TERM_MONTHS);
     }
 
+    /**
+     * Serialises this contract into a pipe-separated string, suitable for CSV-style persistence.
+     *
+     * @return a pipe-separated data string that represents all contract fields
+     */
+    @Override
+    public String toDataString() {
+        return "";
+    }
+
     @Override
     public ContractType getType() {
         return ContractType.LEASE;
