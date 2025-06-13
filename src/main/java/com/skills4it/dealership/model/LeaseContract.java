@@ -1,5 +1,7 @@
 package com.skills4it.dealership.model;
 
+import com.skills4it.dealership.service.FinanceService;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -46,22 +48,10 @@ public final class LeaseContract extends Contract {
     @Override
     public BigDecimal getMonthlyPayment() {
         BigDecimal monthlyRate = ANNUAL_RATE.divide(new BigDecimal("12"), MC);
-        return annuityPayment(getTotalPrice(), monthlyRate, TERM_MONTHS);
+        // GEBRUIK DE GECENTRALISEERDE SERVICE
+        return FinanceService.annuity(getTotalPrice(), monthlyRate, TERM_MONTHS);
     }
 
-    private static BigDecimal annuityPayment(BigDecimal principal,
-                                             BigDecimal monthlyRate,
-                                             int months) {
-
-        BigDecimal onePlusRPowerN = BigDecimal.ONE
-                .add(monthlyRate, MC)
-                .pow(months, MC);
-
-        BigDecimal numerator   = principal.multiply(monthlyRate, MC).multiply(onePlusRPowerN, MC);
-        BigDecimal denominator = onePlusRPowerN.subtract(BigDecimal.ONE, MC);
-
-        return numerator.divide(denominator, 2, RoundingMode.HALF_UP);
-    }
 
     /* ────── getters ────── */
     public BigDecimal getExpectedEndValue() { return expectedEndValue; }

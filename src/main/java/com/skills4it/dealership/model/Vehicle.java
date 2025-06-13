@@ -120,7 +120,5 @@ public final class Vehicle {
         return "%d %s %s <%s> €%s".formatted(year, make, model, vin, price);
     }
 
-    public CharSequence getVehicleType() {
-    return null;
-    }
+
 }
