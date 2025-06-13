@@ -21,17 +21,8 @@ public class UserInterface {
     public UserInterface(DealershipService dealershipService) {
         this.dealershipService = dealershipService;
         this.scanner = new Scanner(System.in);
-        init(); // Load some test data
-    }
-
-    /**
-     * Loads initial data into the dealership for demonstration purposes.
-     */
-    private void init() {
-        // Optionally add a few standard vehicles for testing purposes
-        dealershipService.addVehicle(new Vehicle("VIN123", 2021, "Honda", "Civic", com.skills4it.dealership.model.VehicleType.CAR, "Black", 15000, new BigDecimal("22000.00")));
-        dealershipService.addVehicle(new Vehicle("VIN456", 2023, "Ford", "F-150", com.skills4it.dealership.model.VehicleType.TRUCK, "Red", 5000, new BigDecimal("45000.00")));
-        // TODO: Add more vehicles to make the demo richer
+        // The init() method is no longer needed here,
+        // since DealershipService now handles its own data loading.
     }
 
     /**
@@ -55,7 +46,12 @@ public class UserInterface {
             System.out.print("Enter your choice: ");
 
             try {
-                int choice = Integer.parseInt(scanner.nextLine());
+                String input = scanner.nextLine();
+                if (input.isBlank()) {
+                    continue; // If user just hits enter, show menu again.
+                }
+                int choice = Integer.parseInt(input);
+
                 switch (choice) {
                     case 1:
                         processFindByPriceRequest();
@@ -63,7 +59,12 @@ public class UserInterface {
                     case 2:
                         processFindByMakeModelRequest();
                         break;
-                    // TODO: Implement cases 3 through 10
+                    // TODO: Implement cases 3, 4, 5, 6
+                    case 7:
+                        // --- FIX: This case was missing. It is now implemented. ---
+                        processListAllVehicles();
+                        break;
+                    // TODO: Implement cases 8, 9, 10
                     case 99:
                         running = false;
                         System.out.println("Goodbye!");
@@ -96,12 +97,35 @@ public class UserInterface {
         displayVehicles(vehicles);
     }
 
+    /**
+     * --- NEW METHOD ---
+     * Gets all vehicles from the service and displays them.
+     */
+    private void processListAllVehicles() {
+        System.out.println("\n--- Listing All Vehicles in Inventory ---");
+        List<Vehicle> allVehicles = dealershipService.getAllVehicles();
+        displayVehicles(allVehicles);
+    }
+
+    /**
+     * Helper method to display a list of vehicles to the console.
+     * @param vehicles The list of vehicles to display.
+     */
     private void displayVehicles(List<Vehicle> vehicles) {
         if (vehicles.isEmpty()) {
             System.out.println("No vehicles found matching the criteria.");
         } else {
-            System.out.println("\n--- Found Vehicles ---");
-            vehicles.forEach(System.out::println); // Uses the toString() from Vehicle
+            // Using a formatted header for better alignment
+            System.out.printf("%-5s | %-15s | %-15s | %-10s | %-10s%n", "Year", "Make", "Model", "VIN", "Price");
+            System.out.println("---------------------------------------------------------------------");
+            for (Vehicle vehicle : vehicles) {
+                System.out.printf("%-5d | %-15s | %-15s | %-10s | $%,10.2f%n",
+                        vehicle.getYear(),
+                        vehicle.getMake(),
+                        vehicle.getModel(),
+                        vehicle.getVin(),
+                        vehicle.getPrice());
+            }
         }
     }
 }
