@@ -1,6 +1,7 @@
 package com.skills4it;
 
 import com.skills4it.dealership.data.dao.*;
+import com.skills4it.dealership.model.ContractType;
 import com.skills4it.dealership.service.DealershipService;
 import com.skills4it.dealership.ui.UserInterface;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -20,7 +21,7 @@ public class Main {
         UserInterface userInterface = new UserInterface(dealershipService);
 
         userInterface.display();
-
+      //  ContractType.SALE;
         System.out.println("Car Dealership Application has shut down. Goodbye!");
     }
 }

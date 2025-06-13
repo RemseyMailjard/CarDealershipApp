@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f87f00a1-f412-4641-8f46-beb9f2b2f237" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcLeaseContractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcSalesContractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/LeaseContractDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/SalesContractDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/LeaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/LeaseContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/SalesContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/SalesContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/DealershipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/DealershipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +63,7 @@
       <recent name="com.skills4it.dealership.model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Remse\Desktop\Mijn portfolio\Java\CarDealershipApp\src\main\java\com\skills4it\dealership\old" />
       <recent name="C:\Users\Remse\Desktop\Mijn portfolio\Java\CarDealershipApp\src\main\resources" />
     </key>
   </component>
