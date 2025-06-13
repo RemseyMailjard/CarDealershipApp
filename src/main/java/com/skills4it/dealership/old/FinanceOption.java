@@ -1,4 +1,4 @@
-package com.skills4it.dealership.model;
+package com.skills4it.dealership.old;
 
 public enum FinanceOption { YES, NO }
 

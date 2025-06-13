@@ -5,7 +5,6 @@ import com.skills4it.dealership.service.ContractFactory;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -194,10 +193,10 @@ public class ContractFileManager {
      */
     private static Path getDefaultPath() {
         try {
-            URL fileUrl = ContractFileManager.class.getResource("/contracts.csv");
+            URL fileUrl = ContractFileManager.class.getResource("/com/skills4it/dealership/old/contracts.csv");
             if (fileUrl == null) {
                 System.err.println("WARNING: 'contracts.csv' not found in resources. A new file will be created in the project root.");
-                return Path.of("contracts.csv");
+                return Path.of("com/skills4it/dealership/old/contracts.csv");
             }
             return Path.of(fileUrl.toURI());
         } catch (URISyntaxException e) {

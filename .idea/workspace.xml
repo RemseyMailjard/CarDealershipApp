@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f87f00a1-f412-4641-8f46-beb9f2b2f237" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcLeaseContractDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcSalesContractDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/LeaseContractDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/SalesContractDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcVehicleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/data/dao/JdbcVehicleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/LeaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/LeaseContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/SalesContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/model/SalesContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/DealershipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skills4it/dealership/service/DealershipService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
