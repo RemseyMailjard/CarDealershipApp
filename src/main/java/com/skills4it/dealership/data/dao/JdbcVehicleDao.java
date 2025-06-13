@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * JDBC implementation of the VehicleDao interface for the GTA schema.
+ * JDBC implementation of the VehicleDao interface for the Marc schema.
  * Connects to the database to perform CRUD operations on vehicles.
  */
 public class JdbcVehicleDao implements VehicleDao {
@@ -26,50 +26,50 @@ public class JdbcVehicleDao implements VehicleDao {
 
     @Override
     public List<Vehicle> searchByPriceRange(BigDecimal min, BigDecimal max) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE price BETWEEN ? AND ? ORDER BY price;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE price BETWEEN ? AND ? ORDER BY price;";
         return queryForVehicleList(sql, min, max);
     }
 
     @Override
     public List<Vehicle> searchByMakeModel(String make, String model) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE make LIKE ? AND model LIKE ? ORDER BY make, model;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE make LIKE ? AND model LIKE ? ORDER BY make, model;";
         return queryForVehicleList(sql, "%" + make + "%", "%" + model + "%");
     }
 
     @Override
     public List<Vehicle> searchByYearRange(int min, int max) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE year BETWEEN ? AND ? ORDER BY year DESC;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE year BETWEEN ? AND ? ORDER BY year DESC;";
         return queryForVehicleList(sql, min, max);
     }
 
     @Override
     public List<Vehicle> searchByColor(String color) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE color LIKE ? ORDER BY make, model;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE color LIKE ? ORDER BY make, model;";
         return queryForVehicleList(sql, "%" + color + "%");
     }
 
     @Override
     public List<Vehicle> searchByMileageRange(int min, int max) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE odometer BETWEEN ? AND ? ORDER BY odometer;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE odometer BETWEEN ? AND ? ORDER BY odometer;";
         return queryForVehicleList(sql, min, max);
     }
 
     @Override
     public List<Vehicle> searchByType(String type) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE vehicle_type LIKE ? ORDER BY make, model;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE vehicle_type LIKE ? ORDER BY make, model;";
         return queryForVehicleList(sql, "%" + type + "%");
     }
 
     @Override
     public List<Vehicle> getAll() {
-        String sql = "SELECT * FROM GTA.vehicles ORDER BY make, model;";
+        String sql = "SELECT * FROM Marc.vehicles ORDER BY make, model;";
         return queryForVehicleList(sql);
     }
 
     // --- FIX: Implementation for the missing method from the VehicleDao interface ---
     @Override
     public Optional<Vehicle> findByVin(String vin) {
-        String sql = "SELECT * FROM GTA.vehicles WHERE vin = ?;";
+        String sql = "SELECT * FROM Marc.vehicles WHERE vin = ?;";
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
